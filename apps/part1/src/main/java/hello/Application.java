@@ -16,7 +16,7 @@ public class Application {
 
 	@RequestMapping("/hey")
 	public String hey() {
-		return "Hey Yoh";
+		return "Hey Yo";
 	}
 
 	public static void main(String[] args) {
