@@ -41,6 +41,10 @@
   "remoteUser": "vscode",
   // Dev Containerの追加機能
   "features": {
+    // Act is an open source project that allows you to run your github flow locally.
+    "ghcr.io/devcontainers-contrib/features/act-asdf:2": {
+      "version": "latest"
+    },
     "ghcr.io/devcontainers/features/docker-from-docker:1": {
       "version": "latest"
     },

@@ -1,0 +1,40 @@
+name: "CI(Part1) 2"
+
+on:
+  push:
+    tags-ignore:
+      - "*"
+    branches:
+      - "main"
+    paths:
+      - "apps/part1/**"
+      - ".github/workflows/part1_ci.yml"
+  pull_request:
+    types:
+      - opened
+      - synchronize
+      - reopened
+    paths:
+      - "apps/part1/**"
+      - ".github/workflows/part1_ci.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+
+jobs:
+  test2:
+    name: "Test"
+    runs-on: ubuntu-20.04
+
+    steps:
+      # https://github.com/marketplace/actions/setup-maven-action
+      - name: Setup Maven Action
+        uses: s4u/setup-maven-action@v1.9.0
+
+      - name: "Unit test"
+        working-directory: ./apps/part1
+        run: make test
+
+      - name: "Smoke test"
+        working-directory: ./apps/part1
+        run: make docker-smoke-test-with-build
